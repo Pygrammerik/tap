@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+}
+
+.game-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(255,102,170,0.1) 0%, transparent 70%);
+}
+
+#gameCanvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 40px;
+    border-radius: 20px;
+    min-width: 320px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(255, 102, 170, 0.2);
+    border: 1px solid rgba(255, 102, 170, 0.1);
+}
+
+.logo {
+    font-size: 84px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff66aa, #ff99cc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(255, 102, 170, 0.5);
+    margin-bottom: 40px;
+    animation: pulse 2s infinite;
+    letter-spacing: 2px;
+}
+
+button {
+    display: block;
+    width: 220px;
+    padding: 15px;
+    margin: 15px auto;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, rgba(255, 102, 170, 0.2), rgba(255, 153, 204, 0.2));
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+button:hover {
+    background: linear-gradient(45deg, rgba(255, 102, 170, 0.4), rgba(255, 153, 204, 0.4));
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 102, 170, 0.3);
+}
+
+button:hover:before {
+    left: 100%;
+}
+
+.credits-menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 40px;
+    border-radius: 20px;
+    min-width: 320px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(255, 102, 170, 0.2);
+    border: 1px solid rgba(255, 102, 170, 0.1);
+}
+
+.credits-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff66aa, #ff99cc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.creator-link {
+    display: block;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.creator-link:hover {
+    color: #ff99cc;
+    transform: scale(1.1);
+}
+
+.level-select {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+}
+
+.level-select button {
+    margin: 10px auto;
+    font-size: 16px;
+    width: 200px;
+}
+
+.level-complete {
+    text-align: center;
+}
+
+.level-complete h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    background: linear-gradient(45deg, #ff66aa, #ff99cc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(255, 102, 170, 0.3);
+}
+
+.level-complete p {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.practice-settings {
+    text-align: center;
+}
+
+.practice-settings h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    background: linear-gradient(45deg, #ff66aa, #ff99cc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(255, 102, 170, 0.3);
+}
+
+.setting {
+    margin: 25px 0;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.setting label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ff99cc;
+    text-shadow: 0 0 5px rgba(255, 153, 204, 0.3);
+}
+
+.setting input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    height: 6px;
+    border-radius: 3px;
+    -webkit-appearance: none;
+}
+
+.setting input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(45deg, #ff66aa, #ff99cc);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 102, 170, 0.5);
+}
+
+.setting input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(255, 102, 170, 0.7);
+}
+
+.setting output {
+    display: block;
+    font-size: 16px;
+    color: #ff99cc;
+    text-align: center;
+    margin-top: 5px;
+    text-shadow: 0 0 5px rgba(255, 153, 204, 0.3);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, rgba(255, 102, 170, 0.5), rgba(255, 153, 204, 0.5));
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(255, 102, 170, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, rgba(255, 102, 170, 0.7), rgba(255, 153, 204, 0.7));
+}
