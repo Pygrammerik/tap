@@ -180,19 +180,19 @@ class Circle extends GameTarget {
             if (accuracy > 0.9) {
                 hitType = 'Perfect!';
                 particleCount = 30;
-                points = 30;
+                points = 300;
             } else if (accuracy > 0.7) {
                 hitType = 'Great!';
                 particleCount = 25;
-                points = 20;
+                points = 200;
             } else if (accuracy > 0.5) {
                 hitType = 'Good!';
                 particleCount = 20;
-                points = 15;
+                points = 150;
             } else {
                 hitType = 'Okay';
                 particleCount = 15;
-                points = 10;
+                points = 100;
             }
 
             // Create particles on hit
