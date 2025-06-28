@@ -244,11 +244,18 @@ class Game {
     }
 
     setupEventListeners() {
-        const menu = document.querySelector('.menu');
-        menu.addEventListener('click', (e) => {
-            if (e.target.classList.contains('play-button')) {
-                this.showPracticeSettings();
-            }
+        document.querySelector('.play-button').addEventListener('click', () => {
+            this.showPracticeSettings();
+        });
+
+        document.querySelector('.credits-button').addEventListener('click', () => {
+            document.querySelector('.menu').style.display = 'none';
+            document.querySelector('.credits-menu').style.display = 'block';
+        });
+
+        document.querySelector('.back-button').addEventListener('click', () => {
+            document.querySelector('.credits-menu').style.display = 'none';
+            document.querySelector('.menu').style.display = 'block';
         });
 
         document.querySelector('.credits-button')?.addEventListener('click', () => {
@@ -364,6 +371,7 @@ class Game {
         menu.innerHTML = `
             <div class="logo">tap!</div>
             <button class="play-button">Play</button>
+            <button class="credits-button">Credits</button>
         `;
         this.setupEventListeners();
     }
